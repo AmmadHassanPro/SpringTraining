@@ -10,12 +10,14 @@ import com.FirstSpringBoot.FirstSpringBoot.Repo.BookRepo;
 public class BookController {
 
 	private BookRepo book_repo;
+	public BookController(BookRepo book_repo) {
+		
+		this.book_repo = book_repo;
+	}
 	@RequestMapping("/books")
 	public String getBooks(Model model) {
-	
-		
-		
-		return null;
+		model.addAttribute("books", book_repo.findAll());
+		return "books";
 	}
 	
 	
