@@ -34,7 +34,7 @@ public class vehicle {
 	}
 
 	
-	public String GerInfo() {
+	public String GetInfo() {
 		
 		
 	

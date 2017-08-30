@@ -18,7 +18,7 @@ public class SpringDependencyApplication {
 		
 		
 	vehicle Ford = (vehicle) ctx.getBean("vehicle");
-	System.out.println(Ford.GerInfo());
+	System.out.println(Ford.GetInfo());
 //	tyre Tyre = (tyre) ctx.getBean("tyre");
 
 	}
