@@ -1,24 +1,22 @@
 package com.main.SpringDependency.Dependents;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 @Controller
-
 public class vehicle {
-
-	@Autowired
+	@Autowired @Qualifier("hybridEngine")
+	private Engine engine;
 	private tyre Tyres;
-	@Autowired
 	private door Doors;
-	public vehicle(tyre t , door d) {
+	
+	public vehicle(tyre t , door d, @Qualifier("hybridEngine") Engine E) {
 		this.Tyres = t;
 		this.Doors = d;
-		
-		
+		this.engine = E;
 	}
-	
 	
 	public tyre getTyres() {
 		return Tyres;

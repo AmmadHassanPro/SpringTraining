@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import com.main.SpringDependency.Controller.MyController;
+import com.main.SpringDependency.Dependents.HybridEngine;
 import com.main.SpringDependency.Dependents.tyre;
 import com.main.SpringDependency.Dependents.vehicle;
 
@@ -17,9 +18,10 @@ public class SpringDependencyApplication {
 		ApplicationContext ctx = SpringApplication.run(SpringDependencyApplication.class, args);
 		
 		
+		HybridEngine HE = (HybridEngine) ctx.getBean("hybridEngine");
 	vehicle Ford = (vehicle) ctx.getBean("vehicle");
 	System.out.println(Ford.GetInfo());
-//	tyre Tyre = (tyre) ctx.getBean("tyre");
+
 
 	}
 }
