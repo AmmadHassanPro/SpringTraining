@@ -7,16 +7,19 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class vehicle {
-	@Autowired @Qualifier("hybridEngine")
+	@Autowired
 	private Engine engine;
 	private tyre Tyres;
 	private door Doors;
+	@Autowired
+	private Greetings greetings;
 	
-	public vehicle(tyre t , door d, Engine E) {
+	public vehicle(tyre t , door d, Engine E, Greetings greet) {
 		this.Tyres = t;
 		this.Doors = d;
 		this.engine = E;
 		System.out.println(engine.getType());
+		System.out.println(greet.Greet());
 	}
 	
 	public tyre getTyres() {
