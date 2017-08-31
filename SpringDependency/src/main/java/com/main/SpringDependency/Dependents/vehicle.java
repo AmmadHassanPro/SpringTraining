@@ -12,10 +12,11 @@ public class vehicle {
 	private tyre Tyres;
 	private door Doors;
 	
-	public vehicle(tyre t , door d, @Qualifier("hybridEngine") Engine E) {
+	public vehicle(tyre t , door d, Engine E) {
 		this.Tyres = t;
 		this.Doors = d;
 		this.engine = E;
+		System.out.println(engine.getType());
 	}
 	
 	public tyre getTyres() {
