@@ -8,11 +8,21 @@ import org.springframework.context.annotation.ComponentScan;
 import com.BeanScope.SpringScopeBeanDemo.Beans.ParentBean;
 
 @SpringBootApplication
-@ComponentScan("com.BeanScope.SpringScopeBeanDemo")
+@ComponentScan({"com.BeanScope.SpringScopeBeanDemo"})
 public class SpringScopeBeanDemoApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SpringScopeBeanDemoApplication.class, args);
+		ParentBean pBean = (ParentBean) ctx.getBean(ParentBean.class);
+		System.out.println("Parent Count");
+		pBean.printParentCount();
+		
+		System.out.println("Child Count");
+		pBean.printCurrentCount();
+		
+//Previous Commit Code		
+		/*
+		 
 		ParentBean pBean = (ParentBean) ctx.getBean("parentBean");
 		pBean.printCurrentCount();
 		pBean.printParentCount();
@@ -41,6 +51,6 @@ public class SpringScopeBeanDemoApplication {
 		pBean.printCurrentCount();
 		pBean.printParentCount();
 		
-		
+		*/
 	}
 }
