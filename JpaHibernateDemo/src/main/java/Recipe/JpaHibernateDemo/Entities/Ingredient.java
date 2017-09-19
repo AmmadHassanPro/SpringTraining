@@ -7,12 +7,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 @Entity
 public class Ingredient {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 public Long id;
+private String description;
+private BigDecimal amount;
+@ManyToOne
+private Recipe recipes;
+@OneToOne
+private UnitOfMeasure uof;
 public Long getId() {
 	return id;
 }
@@ -37,8 +44,5 @@ public Recipe getRecipes() {
 public void setRecipes(Recipe recipes) {
 	this.recipes = recipes;
 }
-private String description;
-private BigDecimal amount;
-@ManyToOne
-private Recipe recipes;
+
 }
