@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.Cascade;
 @Entity
@@ -37,6 +40,11 @@ public class Recipe {
 	    private Notes recipeNotes;
 	    @Lob
 	    private Byte[] Image;
+	    
+	    @ManyToMany
+	    @JoinTable(name = "recipe_category",joinColumns = @JoinColumn(name = "recipe_id",referencedColumnName="id"),inverseJoinColumns = @JoinColumn(name = "category_id"))
+	    private Set<Category> categories;
+	    
 	    
 	    public Set<Ingredient> getIngredients() {
 			return ingredients;

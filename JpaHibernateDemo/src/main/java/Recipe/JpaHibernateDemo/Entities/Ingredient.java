@@ -3,6 +3,7 @@ package Recipe.JpaHibernateDemo.Entities;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,10 +19,16 @@ private String description;
 private BigDecimal amount;
 @ManyToOne
 private Recipe recipes;
-@OneToOne
-private UnitOfMeasure uof;
+@OneToOne (fetch = FetchType.EAGER)
+private UnitOfMeasure uom;
 public Long getId() {
 	return id;
+}
+public UnitOfMeasure getUom() {
+	return uom;
+}
+public void setUom(UnitOfMeasure uom) {
+	this.uom = uom;
 }
 public void setId(Long id) {
 	this.id = id;
