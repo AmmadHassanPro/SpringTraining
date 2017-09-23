@@ -1,4 +1,4 @@
-package com.pluralsight.controller;
+package com.MVCHibernate.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

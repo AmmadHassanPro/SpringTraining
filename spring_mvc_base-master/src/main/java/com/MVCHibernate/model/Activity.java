@@ -1,4 +1,4 @@
-package com.pluralsight.model;
+package com.MVCHibernate.model;
 
 public class Activity {
 

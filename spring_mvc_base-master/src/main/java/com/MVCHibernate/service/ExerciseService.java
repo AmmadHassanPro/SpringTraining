@@ -1,8 +1,8 @@
-package com.pluralsight.service;
+package com.MVCHibernate.service;
 
 import java.util.List;
 
-import com.pluralsight.model.Activity;
+import com.MVCHibernate.model.Activity;
 
 public interface ExerciseService {
 

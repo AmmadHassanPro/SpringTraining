@@ -1,11 +1,11 @@
-package com.pluralsight.service;
+package com.MVCHibernate.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.pluralsight.model.Activity;
+import com.MVCHibernate.model.Activity;
 
 
 @Service("exerciseService")
