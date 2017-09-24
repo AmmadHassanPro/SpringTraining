@@ -3,11 +3,13 @@ package com.MVCHibernate.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Range;
 
 
 @Entity
+@Table(name="goals")
 public class Goal {
 	@Id
 	@GeneratedValue
