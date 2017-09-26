@@ -3,14 +3,23 @@ package com.MVCHibernate.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.MVCHibernate.model.Activity;
+import com.MVCHibernate.model.Exercise;
+import com.MVCHibernate.repository.ExcersiceRepositoryImpl;
 
 
 @Service("exerciseService")
 public class ExerciseServiceImpl implements ExerciseService {
-
+	@Autowired
+	private ExcersiceRepositoryImpl excersicerepo;
+	
 	public List<Activity> findAllActivities() {
 		
 		List<Activity> activities = new ArrayList<Activity>();
@@ -28,6 +37,13 @@ public class ExerciseServiceImpl implements ExerciseService {
 		activities.add(swim);
 		
 		return activities;
+	}
+
+	//Transactions must be on the service layer
+	@Transactional
+	public Exercise save(Exercise excersice) {
+	
+		return excersicerepo.save(excersice);
 	}
 	
 }
