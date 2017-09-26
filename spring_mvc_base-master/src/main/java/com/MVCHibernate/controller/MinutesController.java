@@ -2,6 +2,7 @@ package com.MVCHibernate.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.MVCHibernate.model.Activity;
 import com.MVCHibernate.model.Exercise;
+import com.MVCHibernate.model.Goal;
 import com.MVCHibernate.service.ExerciseService;
 
 
@@ -23,6 +25,8 @@ public class MinutesController {
 	@Autowired
 	private ExerciseService exerciseService;
 	
+	@Autowired
+	private ExerciseService excersiceService;
 	@RequestMapping(value = "/addMinutes",  method = RequestMethod.GET)
 	public String getMinutes(@ModelAttribute ("exercise") Exercise exercise) {
 	
@@ -30,13 +34,20 @@ public class MinutesController {
 	}
 	
 	@RequestMapping(value = "/addMinutes",  method = RequestMethod.POST)
-	public String addMinutes(@Valid @ModelAttribute ("exercise") Exercise exercise, BindingResult result) {
+	public String addMinutes(@Valid @ModelAttribute ("exercise") Exercise exercise,HttpSession session , BindingResult result) {
 		
 		System.out.println("exercise: " + exercise.getMinutes());
 		System.out.println("exercise activity: " + exercise.getActivity());
 		
 		if(result.hasErrors()) {
 			return "addMinutes";
+		}
+		else {
+			Goal goal =(Goal) session.getAttribute("goal");
+			
+			exercise.setGoal(goal);
+			excersiceService.save(exercise);
+			
 		}
 		
 		return "addMinutes";
