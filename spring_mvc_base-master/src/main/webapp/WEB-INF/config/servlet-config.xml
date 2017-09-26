@@ -11,7 +11,7 @@
 	<mvc:resources location="assets" mapping="/assets/**" />
 	<mvc:resources location="pdfs" mapping="/pdfs/**" />
 
-	<context:component-scan base-package="com.MVCHibernate" />
+	<context:component-scan base-package="com.MVCHibernate.controller" />
 
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
