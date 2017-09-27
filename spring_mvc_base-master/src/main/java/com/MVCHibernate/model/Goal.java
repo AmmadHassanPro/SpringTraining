@@ -2,7 +2,9 @@ package com.MVCHibernate.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,7 +19,7 @@ public class Goal {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToMany(mappedBy="goal")
+	@OneToMany(mappedBy="goal",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Exercise> exercises;
 	
 	@Range(min = 1, max = 120)
