@@ -1,5 +1,7 @@
 package com.MVCHibernate.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.MVCHibernate.model.Exercise;
 import com.MVCHibernate.model.Goal;
 import com.MVCHibernate.service.GoalService;
 
@@ -45,6 +48,36 @@ public class GoalController {
 		}
 		
 		return "redirect:index.jsp";
+	}
+	
+	@RequestMapping(value = "getGoals" ,  method = RequestMethod.GET)
+	public String getGoals(Model model) {
+		List <Goal>goals = (List<Goal>) goalService.findAllGoals();
+		model.addAttribute("Goals",goals);
+		
+		
+		for(int i = 0; i<goals.size(); i++) {
+			
+			System.out.println("Goal id:"+i);
+			System.out.println("Goal Minutes"+ goals.get(i).getMinutes());
+			
+			for(Exercise ex :goals.get(i).getExercises()){
+				
+				System.out.println("Excercise id:"+i);
+				System.out.println("Activity:"+ex.getActivity());
+				System.out.println("Time Performed:"+ex.getMinutes());
+				
+			}
+		
+			
+			
+		}
+		
+		
+		return "getGoals";
+		
+		
+		
 	}
 	
 }
