@@ -19,7 +19,7 @@ public class Goal {
 	@Id
 	@GeneratedValue
 	private Long id;
-	@OneToMany(mappedBy="goal",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="goal",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Exercise> exercises;
 	
 	@Range(min = 1, max = 120)
