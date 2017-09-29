@@ -9,4 +9,5 @@ import com.MVCHibernate.model.Goal;
 public interface GoalRepository {
 	Goal save(Goal goal);
 	 List getAllGoalls(); 
+	 List getAllGoalsReport();
 }
