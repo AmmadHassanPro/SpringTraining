@@ -7,14 +7,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.MVCHibernate.model.Goal;
+import com.MVCHibernate.model.GoalReport;
 import com.MVCHibernate.repository.GoalRepositoryImpl;
 @Service
 public class GoalServiceImpl implements GoalService {
 
 	
 
+
 	@Autowired
 	private GoalRepositoryImpl goalRepo;
+	
+	
+	public List<GoalReport> getAllGoalsReport() {
+		return goalRepo.getAllGoalsReport();
+	
+
+	}
+
 
 	@Transactional
 	public Goal save(Goal goal) {
