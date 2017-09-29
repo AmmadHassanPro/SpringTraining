@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public class GoalRepositoryImpl implements GoalRepository {
 
+	
+
 	@PersistenceContext
 	private EntityManager em;
 	
@@ -23,6 +25,13 @@ public class GoalRepositoryImpl implements GoalRepository {
 		em.flush();
 		
 		return null;
+	}
+	
+	public List getAllGoalsReport() {
+		Query query =em.createQuery("Select new com.MVCHibernate.model.GoalReport(g.minutes, e.minutes, e.activity)"+"from Goal g,Exercise e where g.id =e.goal.id ");
+		
+		List goalReports = query.getResultList();
+		return goalReports;
 	}
 
 	public List getAllGoalls() {
