@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.MVCHibernate.model.Exercise;
 import com.MVCHibernate.model.Goal;
+import com.MVCHibernate.model.GoalReport;
 import com.MVCHibernate.service.GoalService;
 
 @Controller
@@ -79,5 +80,16 @@ public class GoalController {
 		
 		
 	}
+	@RequestMapping(value = "getGoalsReport" ,  method = RequestMethod.GET)
+	public String getGoalsReport(Model model) {
+		
+		
+		
+		List<GoalReport> goalReport = (List<GoalReport>) goalService.getAllGoalsReport();
+		model.addAttribute("GoalsReport",goalReport);
+		
+		return "getGoalsReport";
+	}
+	
 	
 }
