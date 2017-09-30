@@ -12,13 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.MVCHibernate.model.Activity;
 import com.MVCHibernate.model.Exercise;
-import com.MVCHibernate.repository.ExcersiceRepositoryImpl;
+import com.MVCHibernate.repository.ExcersiceRepository;
+
 
 
 @Service("exerciseService")
 public class ExerciseServiceImpl implements ExerciseService {
 	@Autowired
-	private ExcersiceRepositoryImpl excersicerepo;
+	private ExcersiceRepository excersicerepo;
 	
 	public List<Activity> findAllActivities() {
 		
