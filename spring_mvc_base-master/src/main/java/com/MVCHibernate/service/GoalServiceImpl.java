@@ -8,7 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.MVCHibernate.model.Goal;
 import com.MVCHibernate.model.GoalReport;
-import com.MVCHibernate.repository.GoalRepositoryImpl;
+import com.MVCHibernate.repository.GoalRepository;
+
 @Service
 public class GoalServiceImpl implements GoalService {
 
@@ -16,7 +17,7 @@ public class GoalServiceImpl implements GoalService {
 
 
 	@Autowired
-	private GoalRepositoryImpl goalRepo;
+	private GoalRepository goalRepo;
 	
 	
 	public List<GoalReport> getAllGoalsReport() {
@@ -36,7 +37,7 @@ public class GoalServiceImpl implements GoalService {
 	
 	public List<Goal> findAllGoals() {
 	
-		List goals = goalRepo.getAllGoalls();
+		List goals = goalRepo.findAll();
 		
 		return  goals;
 	}
