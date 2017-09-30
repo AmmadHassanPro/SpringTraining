@@ -1,7 +1,10 @@
 package com.MVCHibernate.repository;
 
-import com.MVCHibernate.model.Exercise;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ExcersiceRepository {
-	Exercise save (Exercise excersice);
+import com.MVCHibernate.model.Exercise;
+@Repository
+public interface ExcersiceRepository extends JpaRepository<Exercise,Long>{
+	
 }
