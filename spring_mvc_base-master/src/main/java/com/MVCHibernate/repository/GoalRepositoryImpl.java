@@ -41,8 +41,8 @@ public class GoalRepositoryImpl implements GoalRepository {
 	public List getAllGoalls() {
 		
 	//	Query query = em.createQuery("Select g from Goal g");
-		//TypedQuery<Goal> query=em.createNamedQuery(Goal.Get_All_Goals,Goal.class);
-		Query query=em.createNamedQuery(Goal.Get_All_Goals,Goal.class);
+		TypedQuery<Goal> query=em.createNamedQuery(Goal.Get_All_Goals,Goal.class);
+		
 		List goal = query.getResultList();
 		
 		return goal;

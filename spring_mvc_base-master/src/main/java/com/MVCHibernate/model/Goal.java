@@ -26,7 +26,7 @@ import org.hibernate.validator.constraints.Range;
 })
 
 public class Goal {
-    
+	
 	public static final String Get_All_Goals = "getAllGoalls";
 	public static final String Get_All_GoalsReport = "getAllGoalsReport";
 	
