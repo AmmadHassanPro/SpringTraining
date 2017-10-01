@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Category {
@@ -20,7 +21,7 @@ public class Category {
 
 
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy="categories")
     private Set<Recipe> recipes;
 
 
