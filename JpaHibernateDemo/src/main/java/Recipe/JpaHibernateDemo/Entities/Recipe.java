@@ -42,8 +42,8 @@ public class Recipe {
 	    private Byte[] Image;
 	    
 	    
-	    @OneToMany
-	    @JoinTable(name = "recipe_category",joinColumns = @JoinColumn(name = "recipe_id"),inverseJoinColumns = @JoinColumn(name = "category_id"))
+	    @ManyToMany
+	   @JoinTable(name = "recipe_category",joinColumns = @JoinColumn(name = "recipe_id"),inverseJoinColumns = @JoinColumn(name = "category_id"))
 	    private Set<Category> categories;
 	    
 	    
