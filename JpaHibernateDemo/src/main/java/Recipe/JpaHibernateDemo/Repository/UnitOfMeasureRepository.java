@@ -9,5 +9,6 @@ import Recipe.JpaHibernateDemo.Entities.UnitOfMeasure;
 public interface UnitOfMeasureRepository extends CrudRepository<UnitOfMeasure,Long>{
 
 // We can create the methods like 'find' By 'attribute, or field name' and in the parameter, the argument must match the field name in the table exactly
-Optional<UnitOfMeasure> findByDescription(String description);
+
+	Optional<UnitOfMeasure> findByDescription(String description);
 }
