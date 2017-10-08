@@ -9,7 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.springframework.stereotype.Component;
+
 @Entity
+@Component
 public class Category {
 
 
