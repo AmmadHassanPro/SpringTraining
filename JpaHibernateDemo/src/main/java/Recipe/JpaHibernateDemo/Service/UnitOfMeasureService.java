@@ -28,6 +28,13 @@ public UnitOfMeasure findByDescription(String description){
 	
 }
 
+public void save(UnitOfMeasure uom) {
+	
+	
+	uom_repo.save(uom);
+	
+}
+
 
 
 	
