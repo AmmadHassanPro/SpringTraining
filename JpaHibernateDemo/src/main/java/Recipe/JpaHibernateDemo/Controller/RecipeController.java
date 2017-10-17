@@ -18,11 +18,18 @@ import Recipe.JpaHibernateDemo.Repository.RecipeRepository;
 import Recipe.JpaHibernateDemo.Service.RecipeService;
 @Controller
 public class RecipeController {
-	@Autowired
+	//@Autowired
 	private RecipeService recpie_service;
 	private List<Recipe> recipe_list;
 	
-    @RequestMapping("/getRecipe")
+	
+    public RecipeController(RecipeService recpie_service) {
+		super();
+		this.recpie_service = recpie_service;
+	}
+
+
+	@RequestMapping("/getRecipe")
 	public String getRecipeList(Model model) {
     	this.recipe_list =  this.recpie_service.findAll();
 		model.addAttribute("Recipes",recipe_list);
