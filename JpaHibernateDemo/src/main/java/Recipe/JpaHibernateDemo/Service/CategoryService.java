@@ -35,6 +35,11 @@ public Category findByDescription(String description){
 	
 	
 }
+public void save(Category cat) {
+	
+	cat_repo.save(cat);
+	
+}
 
 
 	
