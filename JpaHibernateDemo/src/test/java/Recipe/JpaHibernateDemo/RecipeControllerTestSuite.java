@@ -2,7 +2,9 @@ package Recipe.JpaHibernateDemo;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
@@ -51,6 +55,16 @@ public class RecipeControllerTestSuite {// This Junit test case will validate if
 		
 		arg_capture  = ArgumentCaptor.forClass(List.class);// It will capture the argument passed in realtime for us
 	}
+	
+	//A demonstration of Spring Mock MVC
+	@Test
+	public void SpringMockMVCTest() throws Exception{
+	MockMvc mockMVC = MockMvcBuilders.standaloneSetup(recipeController).build();
+	mockMVC.perform(get("/getRecipe")).andExpect(status().isOk()).andExpect(view().name("RecipeList"));// A test that will enusre that when getRecipe is called "Recipe List" view is returned.
+	
+	}
+	
+	
 	@Test
 	public void getRecipeList() throws Exception{
 	when(recpie_service.findAll()).thenReturn(this.recipe_list);// Substituting findALL return with this.recipe_list. We can do that when the object is registered as a Mock.
