@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -35,23 +36,33 @@ public class RecipeControllerTestSuite {// This Junit test case will validate if
 	@Mock
 	private Model model;
 	List<Recipe> recipe_list;
-	
+	ArgumentCaptor<List<Recipe>> arg_capture;
 	
 	@Before
 	public void setUp() throws Exception{
 		MockitoAnnotations.initMocks(this);// Registering all the objects as mocks which are annotated with @Mock
 		recipeController = new RecipeController(recpie_service);// Initializing
-		recipe_list = new ArrayList<Recipe>(); 
+		//Given
+		
+		recipe_list = new ArrayList<Recipe>(); //Adding two Recipe Objects, because we initialize two recipe on start in database
+		
+		recipe_list.add(new Recipe());
+		recipe_list.add(new Recipe());
+		
+		arg_capture  = ArgumentCaptor.forClass(List.class);// It will capture the argument passed in realtime for us
 	}
-	
 	@Test
 	public void getRecipeList() throws Exception{
-		
-		
 	when(recpie_service.findAll()).thenReturn(this.recipe_list);// Substituting findALL return with this.recipe_list. We can do that when the object is registered as a Mock.
-	assertEquals(recipeController.getRecipeList(model),"RecipeList");// Verifying if the string returned by the controller is the same as the one returned by our mock
+	//When
+	String recipe_page = recipeController.getRecipeList(model);
+	//Then
+	assertEquals(recipe_page,"RecipeList");// Verifying if the string returned by the controller is the same as the one returned by our mock
 	verify(recpie_service,times(1)).findAll();//Verifying if the method is executed only one time
-	verify(model,times(1)).addAttribute(eq("Recipes"),anyList());//Verifying if the method is executed only one time
+	verify(model,times(1)).addAttribute(eq("Recipes"),arg_capture.capture());//Verifying if the method is executed only one time.// Capturing argument passed are two, so it will enusre that only two Recipe objects are initialized on start
+	List<Recipe> captured = arg_capture.getValue();	
+	assertEquals(2,captured.size());
+	
 	}
 
 
