@@ -1,17 +1,30 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/circleci-feature9
+    
+    working_directory: ~/circleci-demo-java-spring
+
     docker:
-      - image: maven:3.5.0-jdk-8
+      - image: circleci/openjdk:8-jdk-browsers
+
     steps:
+
       - checkout
+
       - restore_cache:
-          key: circleci-feature9-{{ checksum "pom.xml" }}
-      - run: mvn test
+          key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
+      
+      - run: mvn dependency:go-offline
+      
       - save_cache:
           paths:
             - ~/.m2
-          key: circleci-feature9-{{ checksum "pom.xml" }}
+          key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
+      
+      - run: mvn package
+      
       - store_test_results:
           path: target/surefire-reports
+      
+      - store_artifacts:
+          path: target/demo-java-spring-0.0.1-SNAPSHOT.jar
