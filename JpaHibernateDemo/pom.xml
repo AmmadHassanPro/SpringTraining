@@ -59,7 +59,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
+			<plugin> <!--A Plugin that will enable Unit and Integration testing during build  -->
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
