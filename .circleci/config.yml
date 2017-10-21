@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     
-    working_directory: ~/SpringTraining
+    working_directory: ~/SpringTraining/JpaHibernateDemo
 
     docker:
       - image: circleci/openjdk:8-jdk-browsers
@@ -12,14 +12,14 @@ jobs:
       - checkout
 
       - restore_cache:
-          key: JpaHibernateDemo-{{ checksum "pom.xml" }}
+          key: SpringTraining/JpaHibernateDemo-{{ checksum "pom.xml" }}
       
       - run: mvn dependency:go-offline
       
       - save_cache:
           paths:
             - ~/.m2
-          key: JpaHibernateDemo-{{ checksum "pom.xml" }}
+          key: SpringTraining/JpaHibernateDemo-{{ checksum "pom.xml" }}
       
       - run: mvn package
       
